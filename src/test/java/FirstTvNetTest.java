@@ -16,9 +16,9 @@ public class FirstTvNetTest {
     private final By ACCEPT_COOKIES_BTN = By.xpath(".//button[@mode = 'primary']");
 
     @Test
-    public void firstTest(){
+    public void firstTest() {
         //WebDriver = browser window
-        System.setProperty("webdriver.chrome.driver","C://Users/User/IdeaProjects/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C://Users/User/IdeaProjects/chromedriver.exe");
         WebDriver browserWindow = new ChromeDriver();
         browserWindow.manage().window().maximize();
         browserWindow.get("http://tvnet.lv");

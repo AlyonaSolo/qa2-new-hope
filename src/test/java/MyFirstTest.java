@@ -13,7 +13,7 @@ public class MyFirstTest {
 
         System.out.println("First Name : " + firstName + "\nLast Name :" + lastName);
 
-        int commentCount =36;
+        int commentCount = 36;
         int newComments = 22;
 
         String stringCommentCount = "36";
@@ -22,12 +22,12 @@ public class MyFirstTest {
         System.out.println(commentCount + newComments);
         System.out.println(stringCommentCount + stringNewComments);
 
-        printSum("15","3");
-        printSum("268","523");
+        printSum("15", "3");
+        printSum("268", "523");
 
     }
 
-    private void  printSum(String a , String b) {
+    private void printSum(String a, String b) {
         int first = Integer.parseInt(a);
         int second = Integer.parseInt(b);
 
