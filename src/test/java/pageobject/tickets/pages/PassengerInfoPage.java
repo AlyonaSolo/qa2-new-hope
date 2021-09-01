@@ -2,6 +2,7 @@ package pageobject.tickets.pages;
 
 import model.Reservation;
 import org.apache.commons.lang3.StringUtils;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -32,7 +33,26 @@ public class PassengerInfoPage {
         return baseFunc.findElements(INFO_TXT);
     }
 
-    public void submitPassengerInfo(Reservation reservation) {
+    public PassengerInfoPage checkIfAirportAre(String from, String to) {
+        List<WebElement> airports = getAirports();
+
+        Assertions.assertEquals(from, airports.get(0).getText(), "Wrong departure airport ");
+        Assertions.assertEquals(to, airports.get(1).getText(), "Wrong arrival airport");
+        return this;
+
+    }
+
+    public PassengerInfoPage checkIfName(String name) {
+        Assertions.assertEquals(name, getName(), "Wrong Name in info block!");
+        return this;
+    }
+
+    public PassengerInfoPage checkIfTotalPriceIs(BigDecimal price) {
+        Assertions.assertEquals(price, getPrice(), "Wrong price in info block!");
+        return this;
+    }
+
+    public PassengerInfoPage submitPassengerInfo(Reservation reservation) {
         baseFunc.type(NAME, reservation.getName());
         baseFunc.type(SURNAME, reservation.getSurname());
         baseFunc.type(DISCOUNT, reservation.getDiscount());
@@ -42,6 +62,8 @@ public class PassengerInfoPage {
         baseFunc.select(FLIGHT, reservation.getFullDate());
 
         baseFunc.click(GET_PRICE_LINK);
+
+        return this;
     }
 
     public String getName() {

@@ -16,10 +16,17 @@ public class SeatsPage {
         this.baseFunc = baseFunc;
     }
 
-    public void selectSeat(int nr) {
+    public SeatsPage selectSeat(int nr) {
         WebElement seat = findSeat(nr);
         Assertions.assertNotNull(seat, "Can't find Seat with Nr. " + nr);
         baseFunc.click(seat);
+
+        return this;
+    }
+
+    public SeatsPage checkIfSelectedSeatIs(int nr) {
+        Assertions.assertEquals(nr, getSeatNr(), "Wrong seat Nr!");
+        return this;
     }
 
     public int getSeatNr() {
@@ -32,6 +39,7 @@ public class SeatsPage {
     }
 
     private WebElement findSeat(int nr) {
+        baseFunc.waitForElementsCountToBeMoreThan(SEAT, 10);
         for (WebElement we : baseFunc.findElements(SEAT)) {
             if (Integer.parseInt(we.getText()) == nr) {
                 return we;
