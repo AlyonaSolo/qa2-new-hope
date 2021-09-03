@@ -36,7 +36,7 @@ public class TicketsStepDefs {
         given.setName(info.get("name"));
         given.setSurname(info.get("surname"));
         given.setDiscount(info.get("discount"));
-        given.setAdults(Integer.parseInt(info.get("passengers count")));
+        given.setAdults(Integer.parseInt(info.get("passenger count")));
         given.setChildren(Integer.parseInt(info.get("child count")));
         given.setBugs(Integer.parseInt(info.get("luggage")));
         given.setFullDate(info.get("date"));
